@@ -1,0 +1,49 @@
+<div class="container" *ngIf = "!loading; else spinner">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+        <h1>Login</h1>
+
+        <div class="form-control">
+            <label>Email</label>
+            <input type="text" placeholder="Email" formControlName="email">
+            <small *ngIf = "error">
+                Email or password is incorrect
+            </small>
+            <div
+                *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+                class="validation"
+            >
+                <small *ngIf="form.get('email')?.errors?.required">
+                Email field cannot be empty
+                </small>
+
+                <small *ngIf="form.get('email')?.errors?.email">
+                Enter correct email
+                </small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Password</label>
+            <input type="password" placeholder="Password" formControlName="password">
+
+            <div
+                *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+                class="validation"
+            >
+                <small *ngIf="form.get('password')?.errors?.required">
+                Password field cannot be empty
+                </small>
+
+                <small *ngIf="form.get('password')?.errors?.minlength">
+                Length cannot be less than {{form.get('password')?.errors?.minlength.requiredLength}}.
+                You`ve entered {{form.get('password')?.errors?.minlength.actualLength}}
+                </small>
+            </div>
+        </div>
+        <button class = "btn" type = "submit()">Submit</button>
+    </form>
+</div>
+
+<ng-template #spinner>
+    <mat-spinner [diameter]="50"></mat-spinner>
+</ng-template>
