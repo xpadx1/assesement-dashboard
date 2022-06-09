@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,6 +100,10 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
+=======
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+>>>>>>> a380eb83193122cdb13dee9a63617cd48a7720ea
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,0 +1,26 @@
+.sticky-header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 100;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  
+  
+  .sticky-header {
+    max-width: 45vw;
+    display: flex;
+    margin: 30px auto 0;
+  }
+  
+  .logo-wrapper {
+    width: 30%;
+  }
+  
+  .logo {
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  
