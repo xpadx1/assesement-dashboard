@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
     this.apiService.post<ResponseLoginInterface>('api/login', bodyData)
       .subscribe(res => {
         this.authService.authData = res;
+        this.authService.xToken = res.token
         this.error = false;
         this.loading = false;
         this.snackBarService.openSuccessSnackBar();
