@@ -15,7 +15,7 @@ export class ApiService {
     // if (!xToken) {
     //   return;
     // }
-    const requestUrl = `${environment.url}/${url}?X-Token=${xToken}` 
+    const requestUrl = `${environment.url}/${url}` 
     return this.http.get<T>(requestUrl)
       .pipe(delay(500));
   }

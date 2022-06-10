@@ -1,4 +1,4 @@
-<div class="sticky-header-container" (click) = "test()">
+<div class="sticky-header-container">
     <div class="sticky-header">
         <div class="logo-wrapper">
             <img class="logo" width="87" height="87"
@@ -6,5 +6,6 @@
                  src="assets\images\logo.png">
             <b>Assesment Dashboard</b>
         </div>
+        <button *ngIf = "isAuthorized" class = "btn logout" (click) = "logout()">Logout</button>
     </div>
   </div>

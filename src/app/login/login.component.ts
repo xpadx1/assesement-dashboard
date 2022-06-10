@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+    this.authService.getUserLocalData();
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.email,
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.apiService.post<ResponseLoginInterface>('api/login', bodyData)
       .subscribe(res => {
         this.authService.authData = res;
-        this.authService.xToken = res.token
+        this.authService.setToken(res);
         this.error = false;
         this.loading = false;
         this.snackBarService.openSuccessSnackBar();
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
         this.error = true;
       })
   }
+
 
 }
 

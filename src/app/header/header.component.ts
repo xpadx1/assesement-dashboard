@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -6,17 +6,21 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements DoCheck {
+
+  isAuthorized = false;
 
   constructor(
     private authService: AuthService
   ) { }
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
+    this.isAuthorized = this.authService.isAuthorized();
   }
 
-  test() {
-    console.log(this.authService.xToken)
+  logout() {
+    this.isAuthorized = false
+    this.authService.logout();
   }
 
 }
