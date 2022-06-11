@@ -1,1 +1,28 @@
-<p>dashboard works!</p>
+<div class="container" *ngIf = "userType === 'User'">
+    <tr class="card" *ngFor = "let post of posts">
+        <td>
+            <img [src] = "post.image_url">
+        </td>
+        <td>{{ post.name }}</td>
+        <td>
+            <button class = "btn" (click) = "openGraph(post.id)">Open Graph</button>
+        </td>
+    </tr>
+</div>
+
+<div class="container" *ngIf = "userType === 'Admin'">
+    <tr class="card" *ngFor = "let post of posts">
+        <td>
+            <img width = "350" height = "276" [src] = "post.image_url">
+        </td>
+        <td>{{ post.name }}</td>
+        <td>
+            <button class = "btn" (click) = "openGraph(post.id)">Open Graph</button>
+        </td>
+    </tr>
+    <tr class="card" *ngFor = "let post of adminPosts">
+        <td class = "dashboard-td"><b>Name: </b>{{post.first_name + " " + post.last_name }}</td>
+        <td class = "dashboard-td"><b>Email: </b>{{ post.email }}</td>
+        <td class = "dashboard-td"><b>Groups: </b>{{ post.groups }}</td>
+    </tr>
+</div>

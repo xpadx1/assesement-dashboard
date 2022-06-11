@@ -7,6 +7,7 @@ import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import { SnackBarService } from '../services/snack-bar.service';
+import { Request } from '../enums/request';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.loading = true;
     const bodyData: LoginInterface = this.form.value;
-    this.apiService.post<ResponseLoginInterface>('api/login', bodyData)
+    this.apiService.post<ResponseLoginInterface>(Request.login, bodyData)
       .subscribe(res => {
         this.authService.authData = res;
         this.authService.setToken(res);

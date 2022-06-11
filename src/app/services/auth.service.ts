@@ -42,6 +42,7 @@ export class AuthService {
     localStorage.setItem('tokenSetDate', tokenDate.toString());
     localStorage.setItem('userType', res.role);
     localStorage.setItem('X-Token', res.token);
+    this.xToken = res.token;
   }
 
   getUserLocalData() {
@@ -49,7 +50,6 @@ export class AuthService {
     const userType = localStorage.getItem('userType');
 
     if (xToken && userType === 'User') {
-      console.log(xToken)
       this.isUser = true;
       this.xToken = xToken;
       this.router.navigate(['/dashboard']);

@@ -40,7 +40,7 @@
                 </small>
             </div>
         </div>
-        <button class = "btn" type = "submit()">Submit</button>
+        <button [disabled] = "form.get('email')?.errors || form.get('password')?.errors"class = "btn" type = "submit()">Submit</button>
     </form>
 </div>
 

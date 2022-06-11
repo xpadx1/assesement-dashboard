@@ -6,6 +6,9 @@
                  src="assets\images\logo.png">
             <b>Assesment Dashboard</b>
         </div>
-        <button *ngIf = "isAuthorized" class = "btn logout" (click) = "logout()">Logout</button>
+        <div class="info-container">
+            <span class = "user-type">{{ userType }}</span>
+            <button *ngIf = "isAuthorized" class = "btn logout" (click) = "logout()">Logout</button>
+        </div>
     </div>
   </div>

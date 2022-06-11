@@ -11,11 +11,18 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public get<T>(url: string, xToken: string) {
+  public get<T>(url: string, id?: number) {
     // if (!xToken) {
     //   return;
     // }
-    const requestUrl = `${environment.url}/${url}` 
+    let requestUrl;
+    if (id) {
+      requestUrl = `${environment.url}/${url}?id=${id}` 
+    }
+    else {
+      requestUrl = `${environment.url}/${url}` 
+    }
+
     return this.http.get<T>(requestUrl)
       .pipe(delay(500));
   }
