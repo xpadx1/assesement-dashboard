@@ -6,7 +6,7 @@
             </td>
             <td>{{ post.name }}</td>
             <td>
-                <button class = "btn" (click) = "openGraph(post.id)">Open Graph</button>
+                <a [routerLink] = "['/dashboard', post.id]" class = "btn" (click) = "openGraph(post.id, post.name)">Open Graph</a>
             </td>
     </tr>
     </div>

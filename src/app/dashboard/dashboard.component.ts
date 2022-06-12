@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Request } from '../enums/request';
+import { ChartInterface } from '../interfaces/chart';
 import { AdminPostInterface, PostInterface } from '../interfaces/post';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { ChartService } from '../services/chart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +20,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
+    private router: Router,
+    private chartService: ChartService
   ) { }
 
   ngOnInit(): void {
@@ -33,10 +37,11 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  openGraph(id: number) {
-    this.apiService.get<[]>(Request.graph, id)
+  openGraph(id: number, name: string) {
+    this.chartService.chartTitle = name;
+    this.apiService.get<ChartInterface>(Request.graph, id)
       .subscribe(res => {
-        console.log(res)
+        this.chartService.chartData.next(res);
       })
   }
 

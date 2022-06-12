@@ -14,6 +14,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NavLinksComponent } from './nav-links/nav-links.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { ChartComponent } from './chart/chart.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -27,7 +29,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     DashboardComponent,
     HeaderComponent,
     NavLinksComponent,
-    UsersListComponent
+    UsersListComponent,
+    ChartComponent
   ],
   imports: [
     FormsModule,
@@ -39,7 +42,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     NoopAnimationsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    NgxChartsModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]

@@ -1,0 +1,19 @@
+<div class="container" *ngIf = "!loading; else spinner">
+    <ngx-charts-bar-vertical 
+        [view]="[800,400]"
+        [results]="graphData"
+        [xAxisLabel]="'Assessment'"
+        [legendTitle]="chartTitle"
+        [yAxisLabel]="'Index'"
+        [legend]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [gradient]="true">
+    </ngx-charts-bar-vertical>
+</div>
+
+<ng-template #spinner>
+    <mat-spinner [diameter]="50"></mat-spinner>
+</ng-template>
