@@ -1,4 +1,5 @@
 import { Component, DoCheck } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class HeaderComponent implements DoCheck {
   userType: string;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngDoCheck(): void {
@@ -35,6 +37,10 @@ export class HeaderComponent implements DoCheck {
       this.userType = "Admin";
       return
     }
+  }
+
+  redirectHome() {
+    this.router.navigate(['/dashboard'])
   }
 
 }

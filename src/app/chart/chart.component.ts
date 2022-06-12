@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartInterface } from '../interfaces/chart';
 import { ChartService } from '../services/chart.service';
+import { SnackBarService } from '../services/snack-bar.service';
 
 @Component({
   selector: 'app-chart',
@@ -14,7 +15,8 @@ export class ChartComponent implements OnInit, OnDestroy {
   loading = false;
 
   constructor(
-    private chartService: ChartService
+    private chartService: ChartService,
+    private snackBarService: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class ChartComponent implements OnInit, OnDestroy {
         let obj = { name: prop, value: res.data[prop as keyof typeof res.data] }
         result.push(obj)
       }
+      this.snackBarService.openSuccessSnackBar();
       this.loading = false;
       this.graphData = result;
     })

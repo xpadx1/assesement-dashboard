@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavigationInterface } from '../interfaces/navigation';
 
 @Component({
@@ -28,7 +29,9 @@ export class NavLinksComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
   }

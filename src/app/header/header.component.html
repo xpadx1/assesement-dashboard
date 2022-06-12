@@ -1,13 +1,13 @@
 <div class="sticky-header-container">
     <div class="sticky-header">
-        <div class="logo-wrapper">
+        <div class="logo-wrapper" (click) = "redirectHome()">
             <img class="logo" width="87" height="87"
                  alt="Logo"
                  src="assets\images\logo.png">
             <b>Assesment Dashboard</b>
         </div>
         <app-nav-links [isAdmin] = "userType === 'User' ? true: false" *ngIf = "isAuthorized"></app-nav-links>
-        <div class="info-container">
+        <div [class.info-width] = "userType === 'User'" class="info-container">
             <span class = "user-type">{{ userType }}</span>
             <button *ngIf = "isAuthorized" class = "btn logout" (click) = "logout()">Logout</button>
         </div>

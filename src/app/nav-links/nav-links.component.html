@@ -1,6 +1,7 @@
 <nav class="sections" *ngIf = "!isAdmin">
     <div *ngFor="let navItem of (isAdmin ? navigationAdmin : navigation)" class="nav-item">
       <a [routerLink]="navItem.link"
+         [class.active]="router.url === navItem.link"
       >
         {{navItem.label }}
       </a>

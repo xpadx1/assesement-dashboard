@@ -1,11 +1,15 @@
-.sections{
+.sections {
     display: flex;
     position: relative;
     top: 18px;
     left: 100px;
-  }
+}
   
-  .nav-item{
+.nav-item {
     margin-right: 8vw
   
-  }
+}
+
+.active{
+    border-bottom: 3px solid #333333;
+}

@@ -12,6 +12,7 @@
     max-width: 70vw;
     display: flex;
     margin: 30px auto 0;
+    padding-left: 70px;
   }
   
   .logo-wrapper {
@@ -21,6 +22,10 @@
     position: relative;
     top: -15px;
     justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
   
   .logo {
@@ -60,4 +65,8 @@
   .active{
     background-image: linear-gradient(#54b3d6, #54b3d6);
     border-bottom: 3px solid #54b3d6;
+  }
+
+  .info-width {
+    left: 850px !important;
   }
