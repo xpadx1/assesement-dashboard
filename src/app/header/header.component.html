@@ -6,7 +6,7 @@
                  src="assets\images\logo.png">
             <b>Assesment Dashboard</b>
         </div>
-        <app-nav-links *ngIf = "isAuthorized"></app-nav-links>
+        <app-nav-links [isAdmin] = "userType === 'User' ? true: false" *ngIf = "isAuthorized"></app-nav-links>
         <div class="info-container">
             <span class = "user-type">{{ userType }}</span>
             <button *ngIf = "isAuthorized" class = "btn logout" (click) = "logout()">Logout</button>

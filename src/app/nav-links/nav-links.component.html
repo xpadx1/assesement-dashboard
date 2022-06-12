@@ -1,5 +1,5 @@
 <nav class="sections">
-    <div *ngFor="let navItem of navigation" class="nav-item">
+    <div *ngFor="let navItem of (isAdmin ? navigationAdmin : navigation)" class="nav-item">
       <a [routerLink]="navItem.link"
       >
         {{navItem.label }}

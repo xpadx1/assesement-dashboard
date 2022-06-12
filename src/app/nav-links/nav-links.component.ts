@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavigationInterface } from '../interfaces/navigation';
 
 @Component({
@@ -8,14 +8,23 @@ import { NavigationInterface } from '../interfaces/navigation';
 })
 export class NavLinksComponent implements OnInit {
 
+  @Input() isAdmin: boolean
+
   public navigation: NavigationInterface[] = [
     {
       label: 'Dashboard',
-      link: '/dashboard'
+      link: '/dashboard',
     },
     {
       label: 'Users list',
       link: '/users'
+    },
+  ]
+
+  public navigationAdmin: NavigationInterface[] = [
+    {
+      label: 'Dashboard',
+      link: '/dashboard',
     },
   ]
 
