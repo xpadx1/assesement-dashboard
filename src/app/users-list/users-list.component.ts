@@ -47,10 +47,6 @@ export class UsersListComponent implements OnInit {
       })
   }
 
-  test() {
-    console.log(this.list)
-  }
-
   downloadCsv(el: any) {
     new  AngularCsv([el], `${el.first_name} data`, this.csvOptions);
   }
