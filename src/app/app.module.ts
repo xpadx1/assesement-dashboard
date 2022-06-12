@@ -11,6 +11,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { NavLinksComponent } from './nav-links/nav-links.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -22,7 +25,9 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavLinksComponent,
+    UsersListComponent
   ],
   imports: [
     FormsModule,
@@ -33,7 +38,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MatProgressSpinnerModule,
     NoopAnimationsModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]

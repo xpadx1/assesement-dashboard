@@ -13,40 +13,23 @@ import { AuthService } from '../services/auth.service';
 export class DashboardComponent implements OnInit {
 
   posts: PostInterface[];
-  adminPosts: AdminPostInterface[];
 
-  userType: string;
+  loading = false;
 
   constructor(
     private apiService: ApiService,
-    private authService: AuthService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
-    if (this.authService.isUser) {
-      this.userType = "User"
-      this.getData();
-    }
-
-    else if (this.authService.isAdmin) {
-      this.userType = "Admin"
-      this.getData();
-      this.getAdminData();
-    }
+      this.getData(Request.assessments);
   }
 
-  getData() {
-    this.apiService.get<[]>(Request.assessments)
+  getData(req: string) {
+    this.loading = true;
+    this.apiService.get<[]>(req)
       .subscribe(res => {
+        this.loading = false;
         this.posts = res;
-      })
-  }
-
-  getAdminData() {
-    this.apiService.get<[]>(Request.users)
-      .subscribe(res => {
-        this.adminPosts = res;
       })
   }
 
