@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationInterface } from '../shared/interfaces/navigation';
+import { NavigationInterface } from '../interfaces/navigation';
 
 @Component({
   selector: 'app-nav-links',

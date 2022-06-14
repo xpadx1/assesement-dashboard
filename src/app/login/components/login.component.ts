@@ -1,17 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginInterface } from '../shared/interfaces/login-interface';
-import { ResponseLoginInterface } from '../shared/interfaces/response-login';
-import { ApiService } from '../shared/services/api.service';
-import { AuthService } from '../shared/services/auth.service';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
-import { SnackBarService } from '../shared/services/snack-bar.service';
-import { Request } from '../shared/enums/request';
+import { LoginInterface } from '../../shared/interfaces/login-interface';
+import { ResponseLoginInterface } from '../../shared/interfaces/response-login';
+import { AuthService } from '../../shared/services/auth.service';
+import { SnackBarService } from '../../shared/services/snack-bar.service';
+import { Request } from '../../shared/enums/request';
 import { select, Store } from '@ngrx/store';
-import { loginAction } from '../store/actions/login.action';
+import { loginAction } from '../../store/actions/login.action';
 import { Observable } from 'rxjs';
-import { isSubmittingSelector } from '../store/selectors';
+import { isSubmittingSelector } from '../../store/selectors';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-login',

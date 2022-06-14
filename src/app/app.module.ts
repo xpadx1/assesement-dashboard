@@ -5,22 +5,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeaderComponent } from './header/header.component';
+import { DashboardComponent } from './dashboard/dashboard-components/dashboard.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { NavLinksComponent } from './nav-links/nav-links.component';
-import { UsersListComponent } from './users-list/users-list.component';
+import { NavLinksComponent } from './shared/nav-links/nav-links.component';
+import { UsersListComponent } from './dashboard/users-list/users-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { NgxChartsModule }from '@swimlane/ngx-charts';
-import { ChartComponent } from './chart/chart.component';
+import { ChartComponent } from './dashboard/chart/chart.component';
 import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './store/reducers/login.reducer';
 import { LoginModule } from './login/login.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -30,25 +30,19 @@ const INTERCEPTOR_PROVIDER: Provider = {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     HeaderComponent,
     NavLinksComponent,
-    UsersListComponent,
     ChartComponent
   ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
     BrowserModule,
-    FormsModule,
-    LoginModule,
-    ReactiveFormsModule,
     MatProgressSpinnerModule,
-    NoopAnimationsModule,
-    MatSnackBarModule,
-    BrowserAnimationsModule,
-    MatTableModule,
+    FormsModule,
+    DashboardModule,
     NgxChartsModule,
+    LoginModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

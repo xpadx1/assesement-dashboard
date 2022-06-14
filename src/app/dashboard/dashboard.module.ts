@@ -3,28 +3,40 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from 'src/app/store/reducers/login.reducer'
-import { LoginComponent } from './components/login.component';
-import * as fromLogin from 'src/app/store/reducers/login.reducer';
+import { ChartComponent, NgxChartsModule } from '@swimlane/ngx-charts';
+import { reducer } from 'src/app/store/reducers/login.reducer';
 import { AppRoutingModule } from '../app-routing.module';
+import { DashboardComponent } from './dashboard-components/dashboard.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     FormsModule,
     NoopAnimationsModule,
     MatSnackBarModule,
-    StoreModule.forFeature('login', reducer)
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    NgxChartsModule,
+
   ],
   exports: [
-    LoginComponent
+    DashboardComponent
   ],
-  declarations: [LoginComponent]
+  declarations: [
+    DashboardComponent,
+    UsersListComponent,
+  ]
 })
-export class LoginModule {}
+export class DashboardModule {}

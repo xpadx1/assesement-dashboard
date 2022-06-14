@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ChartInterface } from '../shared/interfaces/chart';
-import { ChartService } from '../shared/services/chart.service';
-import { SnackBarService } from '../shared/services/snack-bar.service';
+import { ChartInterface } from '../../shared/interfaces/chart';
+import { ChartService } from '../../shared/services/chart.service';
+import { SnackBarService } from '../../shared/services/snack-bar.service';
 
 @Component({
   selector: 'app-chart',
