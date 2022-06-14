@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Request } from '../enums/request';
-import { ChartInterface } from '../interfaces/chart';
-import { AdminPostInterface, PostInterface } from '../interfaces/post';
-import { ApiService } from '../services/api.service';
-import { AuthService } from '../services/auth.service';
-import { ChartService } from '../services/chart.service';
+import { Request } from '../shared/enums/request';
+import { ChartInterface } from '../shared/interfaces/chart';
+import { AdminPostInterface, PostInterface } from '../shared/interfaces/post';
+import { ApiService } from '../shared/services/api.service';
+import { AuthService } from '../shared/services/auth.service';
+import { ChartService } from '../shared/services/chart.service';
 
 @Component({
   selector: 'app-dashboard',

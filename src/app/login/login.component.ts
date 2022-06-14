@@ -1,13 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginInterface } from '../interfaces/login-interface';
-import { ResponseLoginInterface } from '../interfaces/response-login';
-import { ApiService } from '../services/api.service';
-import { AuthService } from '../services/auth.service';
+import { LoginInterface } from '../shared/interfaces/login-interface';
+import { ResponseLoginInterface } from '../shared/interfaces/response-login';
+import { ApiService } from '../shared/services/api.service';
+import { AuthService } from '../shared/services/auth.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
-import { SnackBarService } from '../services/snack-bar.service';
-import { Request } from '../enums/request';
+import { SnackBarService } from '../shared/services/snack-bar.service';
+import { Request } from '../shared/enums/request';
+import { select, Store } from '@ngrx/store';
+import { loginAction } from '../store/actions/login.action';
+import { Observable } from 'rxjs';
+import { isSubmittingSelector } from '../store/selectors';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +21,7 @@ import { Request } from '../enums/request';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
+  isSubmitting$: Observable<boolean>
   error = false;
   loading = false;
 
@@ -24,11 +29,13 @@ export class LoginComponent implements OnInit {
     private apiService: ApiService,
     private authService: AuthService,
     private router: Router,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private store: Store
     ) {}
 
   ngOnInit(): void {
     this.authService.getUserLocalData();
+    this.initializeValues();
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.email,
@@ -41,9 +48,14 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  initializeValues(): void {
+    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))  
+  }
+
   submit() {
     this.loading = true;
     const bodyData: LoginInterface = this.form.value;
+    this.store.dispatch(loginAction(this.form.value));
     this.apiService.post<ResponseLoginInterface>(Request.login, bodyData)
       .subscribe(res => {
         this.authService.authData = res;

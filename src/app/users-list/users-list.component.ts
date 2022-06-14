@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, _MatTableDataSource } from '@angular/material/table';
-import { Request } from '../enums/request';
-import { ApiService } from '../services/api.service';
+import { Request } from '../shared/enums/request';
+import { ApiService } from '../shared/services/api.service';
 import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 
 @Component({
