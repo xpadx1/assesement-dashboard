@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './store/reducers/login.reducer';
 import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { EffectsModule, EffectsRootModule } from '@ngrx/effects';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -42,6 +43,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     FormsModule,
     DashboardModule,
     NgxChartsModule,
+    EffectsModule.forRoot([]),
     LoginModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({

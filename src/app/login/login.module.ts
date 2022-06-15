@@ -9,6 +9,8 @@ import { reducer } from 'src/app/store/reducers/login.reducer'
 import { LoginComponent } from './components/login.component';
 import * as fromLogin from 'src/app/store/reducers/login.reducer';
 import { AppRoutingModule } from '../app-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { LoginEffect } from '../store/effects/login.effect';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { AppRoutingModule } from '../app-routing.module';
     FormsModule,
     NoopAnimationsModule,
     MatSnackBarModule,
-    StoreModule.forFeature('login', reducer)
+    StoreModule.forFeature('login', reducer),
+    EffectsModule.forFeature([LoginEffect])
   ],
   exports: [
     LoginComponent

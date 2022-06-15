@@ -9,7 +9,7 @@ import { Request } from '../../shared/enums/request';
 import { select, Store } from '@ngrx/store';
 import { loginAction } from '../../store/actions/login.action';
 import { Observable } from 'rxjs';
-import { isSubmittingSelector } from '../../store/selectors';
+import { isSubmittingSelector } from '../../store/selectors/login.selector';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -54,8 +54,11 @@ export class LoginComponent implements OnInit {
   submit() {
     this.loading = true;
     const bodyData: LoginInterface = this.form.value;
-    this.store.dispatch(loginAction(this.form.value));
-    this.apiService.post<ResponseLoginInterface>(Request.login, bodyData)
+    const request = {
+      data: this.form.value
+    }
+    this.store.dispatch(loginAction(request));
+    this.apiService.postLogin<ResponseLoginInterface>(bodyData)
       .subscribe(res => {
         this.authService.authData = res;
         this.authService.setToken(res);

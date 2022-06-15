@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {catchError, delay } from 'rxjs/operators'
 import { throwError } from 'rxjs';
+import { Request } from '../enums/request';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,6 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public get<T>(url: string, id?: number) {
-    // if (!xToken) {
-    //   return;
-    // }
     let requestUrl;
     if (id) {
       requestUrl = `${environment.url}/${url}?id=${id}` 
@@ -27,8 +25,8 @@ export class ApiService {
       .pipe(delay(500));
   }
 
-  public post<T>(url: string, body: any) {
-    const requestUrl = `${environment.url}/${url}`;
+  public postLogin<T>(body: any) {
+    const requestUrl = `${environment.url}/${Request.login}`;
     return this.http.post<T>(requestUrl, body)
       .pipe(
         catchError(error => {

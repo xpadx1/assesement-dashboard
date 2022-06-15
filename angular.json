@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "assessment-dashboard"
+  "defaultProject": "assessment-dashboard",
+  "cli": {
+    "analytics": false
+  }
 }
