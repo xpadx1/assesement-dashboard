@@ -1,13 +1,11 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { loginAction } from "../actions/login.action";
+import { loginAction, loginFailureAction, loginSuccessAction } from "../actions/login.action";
 import { LoginStateInterface } from "../types/loginStateInterface";
 
 const initialLoginState: LoginStateInterface = {
-    isSubmitting: false
-}
-
-const initialUserTypeState = {
-    userType: ''
+    isSubmitting: false,
+    isLoggedIn: false,
+    currentUser: null
 }
 
 const loginReducer = createReducer(
@@ -19,20 +17,28 @@ const loginReducer = createReducer(
             ...state, 
             isSubmitting: true
         })
+    ),
+    on(
+        loginSuccessAction, 
+        (state, action): LoginStateInterface => 
+        ({ 
+            ...state, 
+            isSubmitting: false,
+            isLoggedIn: true,
+            currentUser: action.currentUser
+        })
+    ),
+    on(
+        loginFailureAction, 
+        (state): LoginStateInterface => 
+        ({ 
+            ...state, 
+            isSubmitting: false,
+            isLoggedIn: false
+        })
     )
 );
 
-// const userTypeReducer = createReducer(
-//     initialUserTypeState,
-//     on(
-//         userTypeAction,
-//         state => ({
-//             ...state,
-//             userType:
-//         })
-//     )
-// )
-  
 export function reducer(state: LoginStateInterface, action: Action) {
     return loginReducer(state, action);
 }

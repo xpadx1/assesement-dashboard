@@ -2,9 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, switchMap } from "rxjs/operators";
-import { ResponseLoginInterface } from "src/app/shared/interfaces/response-login";
 import { ApiService } from "src/app/shared/services/api.service";
-import { AuthService } from "src/app/shared/services/auth.service";
 import { loginAction, loginFailureAction, loginSuccessAction } from "../actions/login.action";
 
 @Injectable()
